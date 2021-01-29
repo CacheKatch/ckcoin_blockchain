@@ -29,11 +29,28 @@ Once the mining node is running, copy the enode path (this information is needed
 step 5: Run the Transactional node (node 6), by opening another terminal window and typing this command in the `Blockchain-Tools` folder:
 
 ```shell
-./geth --datadir node6 --unlock "<Address from Node6 Keystore>" --mine --port 30304 --bootnodes enode://<Enode from Node5> --ipcdisable
+./geth --datadir node6 --unlock "<Public Address from Node6 Keystore>" --mine --port 30304 --bootnodes enode://<Enode from Node5> --ipcdisable
 ```
+
+The Transactional node must use a different port from the "mining" node, thus the port command 30304 must be specified to ensure that the port doesn't get reassigned.
+
+## Configuring katchcoin network in MyCrypto wallet:
+
+To be able to execute transactions, and while both nodes are running in their respective terminal windows, the crypto wallet needs to be configured with the `katchcoin` network. To configure the network in the wallet: open MyCrypto and create a custom node called: `katchcoin`, network name: `katchcoin`, with Chain ID `333`, and URL: `http://127.0.0.1:8545`. Refer to attached video for the configuration.
+
+![configuring katchcoin in myCrypto](Screenshots/crypto_network_config.gif)
+
+
 ## Executing Transactions with katchcoin network:
 
-<img src=Screenshots/balances_before_after.png width="400" align="right" />To demonstrate that the katchcoin network is functional, a big transaction (50,000,000,000,000 ETH) was initiated from node 5 to node 6 with the objective of identify the balance change from the sender node (node5).
+<img src=Screenshots/balances_before_after.png width="400" align="right" />
+Once the network is setup in the wallet and while the two nodes are running on their windows, the system is ready to operate.
+
+To demonstrate that the katchcoin network is functional, a big transaction (50,000,000,000,000 ETH) was initiated from node 5 to node 6 with the objective of identify the balance change from the sender node (node5).
+
+To complete the transaction, open the wallet using the the `Private Key` option and paste the following private key
+
+ Alternatively, the private key can be obtained by opening wallet using `Keystore File` option and locating the keystore folder located inside the node5 folder. Once there, reveal the private keys for node 5 (this is required in order to authorize transactions).
 
 
 ![nodes running](Screenshots/nodes_running_transac.png)
@@ -42,9 +59,6 @@ Additionally, an image of both nodes mining (signalling) during the transaction 
 
 <img src=Screenshots/status_pending.png width="350" align="left" />
 
-
-
-## Setting Up the MyCrypto wallet:
 
 
 
